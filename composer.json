@@ -1,0 +1,11 @@
+{
+    "name": "wand2016/php-my-own-framework",
+    "description": "Ore Ore simple web framework",
+    "license": "Apache-2.0",
+    "require": {
+        "php": "^7.2"
+    },
+    "config": {
+        "sort-packages": true
+    }    
+}
