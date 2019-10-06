@@ -3,7 +3,9 @@
     "description": "Ore Ore simple web framework",
     "license": "Apache-2.0",
     "require": {
-        "php": "^7.2"
+        "php": "^7.2",
+        "ext-intl": "^1.1",
+        "ext-mbstring": "^7.2"
     },
     "config": {
         "sort-packages": true
