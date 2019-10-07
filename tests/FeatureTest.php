@@ -19,12 +19,12 @@ class FeatureTest extends TestCase
     public function rootにGETでアクセスして200OK()
     {
         $this->assertTrue(true);
-        // $client = new Client();
+        $client = new Client();
 
-        // $this->assertSame(
-        //     200,
-        //     $client->get('/')->getStatusCode()
-        // );
+        $this->assertSame(
+            200,
+            $client->get('http://localhost:8080/')->getStatusCode()
+        );
 
     }
 
