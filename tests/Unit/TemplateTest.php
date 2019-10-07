@@ -14,13 +14,16 @@ class TemplateTest extends TestCase
     /**
      * @test
      */
-    public function something_is_something()
+    public function テンプレートが適切に描画される()
     {
-        $file = 'hoge';
-        $params = [];
+        $file = __DIR__ . '/view/index.phtml';
+        $params = ['name' => 'D.Horiyama'];
 
         $sut = new Template($file, $params);
 
-        $this->assertTrue(true);
+        $this->assertSame(
+            'my name is D.Horiyama',
+            $sut . ''
+        );
     }
 }
