@@ -6,6 +6,7 @@
         "php": "^7.2",
         "ext-intl": "^1.1",
         "ext-mbstring": "^7.2",
+        "guzzlehttp/guzzle": "^6.3",
         "phpunit/phpunit": "^8.4"
     },
     "config": {
