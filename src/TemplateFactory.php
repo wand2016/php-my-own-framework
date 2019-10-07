@@ -26,6 +26,11 @@ class TemplateFactory
      */
     public function create(string $name, array $params): Template
     {
-        return new Template("{$this->base_dir}/{$name}.phtml", $params);
+        return new Template(
+            "{$this->base_dir}/_base.phtml",
+            [
+                'main' => "{$this->base_dir}/{$name}.phtml"
+            ] + $params
+        );
     }
 }

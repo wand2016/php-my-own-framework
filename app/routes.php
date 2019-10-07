@@ -9,7 +9,13 @@ $routes['/'] = function () use ($template) {
     return [
         200,
         ['Content-Type' => 'text/html'],
-        $template->create('index', ['name' => 'D.Horiyama'])
+        $template->create(
+            'index',
+            [
+                'title' => 'D.Horiyamaのホームページのindex.html',
+                'name' => 'D.Horiyama',
+            ]
+        )
     ];
 };
 
