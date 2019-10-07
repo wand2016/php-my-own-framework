@@ -1,10 +1,16 @@
 <?php
 
-$routes['/'] = function () {
-    ob_start();
-    include __DIR__ . '/../app/view/index.phtml';
+use Src\TemplateFactory;
 
-    return [200, ['Content-Type' => 'text/html'], ob_get_clean()];
+$routes = [];
+$template = new TemplateFactory(__DIR__ . '/../app/view/');
+
+$routes['/'] = function () use ($template) {
+    return [
+        200,
+        ['Content-Type' => 'text/html'],
+        $template->create('index', ['name' => 'D.Horiyama'])
+    ];
 };
 
 $routes['/phpinfo.php'] = function () {
