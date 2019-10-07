@@ -12,5 +12,10 @@ if ($_SERVER['REQUEST_URI'] === '/') {
     exit;
 }
 
+if ($_SERVER['REQUEST_URI'] == '/phpinfo.php') {
+    phpinfo();
+    exit;
+}
+
 http_response_code(404);
 echo '<h1>404 not found</h1>';
