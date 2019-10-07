@@ -12,19 +12,28 @@ use GuzzleHttp\Client;
 
 class FeatureTest extends TestCase
 {
+    /** @var Client */
+    private $httpClient;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->httpClient = new Client([
+            'base_uri' => 'http://localhost:8080',
+            'http_errors' => false
+        ]);
+    }
 
     /**
      * @test
      */
     public function rootにGETでアクセスして200OK()
     {
-        $client = new Client();
-
         $this->assertSame(
             200,
-            $client->get('http://localhost:8080/')->getStatusCode()
+            $this->httpClient->get('/')->getStatusCode()
         );
-
     }
 
     /**
@@ -32,13 +41,10 @@ class FeatureTest extends TestCase
      */
     public function クエリパラメータがあっても20OK()
     {
-        $client = new Client();
-
         $this->assertSame(
             200,
-            $client->get('http://localhost:8080/?hogehoge')->getStatusCode()
+            $this->httpClient->get('/?hogehoge')->getStatusCode()
         );
-
     }
 
     /**
@@ -46,11 +52,9 @@ class FeatureTest extends TestCase
      */
     public function phpinfo_phpにGETでアクセスして200OK()
     {
-        $client = new Client();
-
         $this->assertSame(
             200,
-            $client->get('http://localhost:8080/phpinfo.php')->getStatusCode()
+            $this->httpClient->get('/phpinfo.php')->getStatusCode()
         );
     }
 
@@ -59,14 +63,9 @@ class FeatureTest extends TestCase
      */
     public function 未定義のrouteにアクセスすると404()
     {
-        $client = new Client([
-            'base_uri' => 'http://localhost:8080',
-            'http_errors' => false
-        ]);
-
         $this->assertSame(
             404,
-            $client->get('/undef')->getStatusCode()
+            $this->httpClient->get('/undef')->getStatusCode()
         );
 
     }
