@@ -52,7 +52,6 @@ class FeatureTest extends TestCase
             200,
             $client->get('http://localhost:8080/phpinfo.php')->getStatusCode()
         );
-
     }
 
     /**
@@ -60,11 +59,14 @@ class FeatureTest extends TestCase
      */
     public function 未定義のrouteにアクセスすると404()
     {
-        $client = new Client();
+        $client = new Client([
+            'base_uri' => 'http://localhost:8080',
+            'http_errors' => false
+        ]);
 
         $this->assertSame(
             404,
-            $client->get('http://localhost:8080/undef')->getStatusCode()
+            $client->get('/undef')->getStatusCode()
         );
 
     }
