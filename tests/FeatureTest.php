@@ -28,4 +28,20 @@ class FeatureTest extends TestCase
 
     }
 
+    /**
+     * @test
+     */
+    public function クエリパラメータがあっても20OK()
+    {
+        $this->assertTrue(true);
+        $client = new Client();
+
+        $this->assertSame(
+            200,
+            $client->get('http://localhost:8080/?hogehoge')->getStatusCode()
+        );
+
+    }
+
+
 }
