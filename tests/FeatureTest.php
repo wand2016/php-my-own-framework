@@ -18,7 +18,6 @@ class FeatureTest extends TestCase
      */
     public function rootにGETでアクセスして200OK()
     {
-        $this->assertTrue(true);
         $client = new Client();
 
         $this->assertSame(
@@ -33,7 +32,6 @@ class FeatureTest extends TestCase
      */
     public function クエリパラメータがあっても20OK()
     {
-        $this->assertTrue(true);
         $client = new Client();
 
         $this->assertSame(
@@ -42,6 +40,22 @@ class FeatureTest extends TestCase
         );
 
     }
+
+
+    /**
+     * @test
+     */
+    public function phpinfo_phpにGETでアクセスして200OK()
+    {
+        $client = new Client();
+
+        $this->assertSame(
+            200,
+            $client->get('http://localhost:8080/phpinfo.php')->getStatusCode()
+        );
+
+    }
+
 
 
 }
